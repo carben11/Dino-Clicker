@@ -11,16 +11,16 @@ public class HungerBar : MonoBehaviour
     private void Start()
     {
         slider = GetComponent<Slider>();
-        slider.maxValue = LC.LevelClicks;
+        slider.maxValue = LC.LevelPoints;
         slider.value = 0f;
     }
 
     private void Update()
     {
-        if (LC.ClicksTilNextLevel != 0f)
+        if (LC.PointsTilNextLevel != 0f)
         {
-            slider.value = LC.LevelClicks - LC.ClicksTilNextLevel;
+            slider.value = LC.LevelPoints - LC.PointsTilNextLevel;
         }
-        slider.maxValue = LC.LevelClicks;
+        slider.maxValue = LC.LevelPoints;
     }
 }
