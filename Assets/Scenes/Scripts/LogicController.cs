@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class LogicController : MonoBehaviour
 {
-    public int Clicks;
-    public int CurrentLevel;
-    public int ClicksTilNextLevel;
-    public int Multiplier;
-    public int LevelClicks;
+    public float Clicks;
+    public float CurrentLevel;
+    public float ClicksTilNextLevel;
+    public float Multiplier;
+    public float LevelClicks;
 
     public EggController Egg;
 
-    void Start()
+    void Awake()
     {
-        Clicks = 0;
-        CurrentLevel = 1;  
-        Multiplier = 1;
-        LevelClicks = 10;
-        ClicksTilNextLevel = 10;
+        Clicks = 0f;
+        CurrentLevel = 1f;  
+        Multiplier = 1f;
+        LevelClicks = 20f;
+        ClicksTilNextLevel = 20f;
     }
 
     
     void Update()
     {
-        if(ClicksTilNextLevel <= 0)
+        if(ClicksTilNextLevel == 0f)
         {
             Egg.Hatch();
             CurrentLevel += 1;
-            LevelClicks = 10 ^ CurrentLevel;
+            LevelClicks = Mathf.Pow(10f, CurrentLevel);
             ClicksTilNextLevel = LevelClicks;
         }
     }
@@ -37,6 +37,5 @@ public class LogicController : MonoBehaviour
     {
         Clicks += Multiplier;
         ClicksTilNextLevel -= Multiplier;
-        Debug.Log(ClicksTilNextLevel);
     }
 }
