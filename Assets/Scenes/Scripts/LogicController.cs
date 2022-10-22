@@ -28,7 +28,7 @@ public class LogicController : MonoBehaviour
         PointsTilNextLevel = 20f;
         ACSpeed = 0f;
         ACTime = 1f;
-        level = 0f;
+        level = 1f;
         ACEnabled = false;
     }
 
