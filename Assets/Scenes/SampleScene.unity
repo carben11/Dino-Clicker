@@ -547,13 +547,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8911dae7c80becb49985d37d826ff59c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clicks: 0
+  Points: 0
   CurrentLevel: 0
-  ClicksTilNextLevel: 0
+  PointsTilNextLevel: 0
   Multiplier: 0
-  LevelClicks: 0
+  LevelPoints: 0
   ACSpeed: 0
   ACTime: 0
+  Clicks: 0
   ACEnabled: 0
   Egg: {fileID: 661786116}
 --- !u!1 &519420028
@@ -1190,7 +1191,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 145768450}
         m_TargetAssemblyTypeName: LogicController, Assembly-CSharp
-        m_MethodName: IncreaseMult
+        m_MethodName: EnableAuto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

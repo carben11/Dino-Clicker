@@ -12,10 +12,12 @@ public class LogicController : MonoBehaviour
     public float ACSpeed;
     public float ACTime;
     public float Clicks;
+    public float level;
 
     public bool ACEnabled;
 
     public EggController Egg;
+
 
     void Awake()
     {
@@ -26,6 +28,7 @@ public class LogicController : MonoBehaviour
         PointsTilNextLevel = 20f;
         ACSpeed = 0f;
         ACTime = 1f;
+        level = 0f;
         ACEnabled = false;
     }
 
@@ -38,10 +41,12 @@ public class LogicController : MonoBehaviour
             CurrentLevel += 1;
             LevelPoints = Mathf.Pow(10f, CurrentLevel);
             PointsTilNextLevel = LevelPoints;
+            level += 1f;
         }
-        if(ACEnabled)
+        if(ACEnabled == true)
         {
-            
+            StartCoroutine(AutoClicker());
+            ACEnabled = false;
         }
     }
 
@@ -61,12 +66,17 @@ public class LogicController : MonoBehaviour
     public void EnableAuto()
     {
         ACEnabled = true;
-        ACSpeed += 1f;
+        ACTime *= 1.5f;
     }
 
     private IEnumerator AutoClicker()
     {
+        Points += 1;
+        PointsTilNextLevel -= 1;
+        Clicks += 1;
+        Debug.Log(ACTime);
         yield return new WaitForSeconds(1 / ACTime);
+        ACEnabled = true;
     }
 
 }
