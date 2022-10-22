@@ -1271,7 +1271,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 145768450}
         m_TargetAssemblyTypeName: LogicController, Assembly-CSharp
-        m_MethodName: IncreaseMult
+        m_MethodName: EnableAuto
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

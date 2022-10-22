@@ -29,7 +29,7 @@ public class PointsController : MonoBehaviour
         else {
             float temp = points/100;
             scaledPoints = (MathF.Floor(temp))/10;
-            printPoints = "POINTS: " +  scaledPoints.ToString() + " K";
+            printPoints = "POINTS: " +  scaledPoints.ToString() + "K";
         }
         pointsText.text = printPoints;
 
