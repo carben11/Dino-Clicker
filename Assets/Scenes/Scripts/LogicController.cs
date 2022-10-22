@@ -8,6 +8,7 @@ public class LogicController : MonoBehaviour
     public int CurrentLevel;
     public int ClicksTilNextLevel;
     public int Multiplier;
+    public int LevelClicks;
 
     public EggController Egg;
 
@@ -16,6 +17,7 @@ public class LogicController : MonoBehaviour
         Clicks = 0;
         CurrentLevel = 1;  
         Multiplier = 1;
+        LevelClicks = 10;
         ClicksTilNextLevel = 10;
     }
 
@@ -26,7 +28,8 @@ public class LogicController : MonoBehaviour
         {
             Egg.Hatch();
             CurrentLevel += 1;
-            ClicksTilNextLevel = 10 ^ CurrentLevel;
+            LevelClicks = 10 ^ CurrentLevel;
+            ClicksTilNextLevel = LevelClicks;
         }
     }
 
