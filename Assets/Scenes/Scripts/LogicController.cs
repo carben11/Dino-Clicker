@@ -13,10 +13,6 @@ public class LogicController : MonoBehaviour
     public float ACTime;
     public float Clicks;
     public float level;
-    public float rocks;
-    public float levelRocks;
-    public float multLevel;
-    public float autoLevel;
 
     public bool ACEnabled;
 
@@ -32,10 +28,7 @@ public class LogicController : MonoBehaviour
         PointsTilNextLevel = 20f;
         ACSpeed = 0f;
         ACTime = 1f;
-        level = 0f;
-        levelRocks = 10f;
-        rocks = 0f;
-
+        level = 1f;
         ACEnabled = false;
     }
 
@@ -47,10 +40,8 @@ public class LogicController : MonoBehaviour
             Egg.Hatch();
             CurrentLevel += 1;
             LevelPoints = Mathf.Pow(10f, CurrentLevel);
-            rocks += levelRocks;
             PointsTilNextLevel = LevelPoints;
             level += 1f;
-            levelRocks = LevelPoints / Mathf.Pow(CurrentLevel, 2);
         }
         if(ACEnabled == true)
         {
@@ -68,31 +59,14 @@ public class LogicController : MonoBehaviour
 
     public void IncreaseMult()
     {
-        if (rocks > Mathf.Pow(100, multLevel / 2))
-        {
-            Multiplier *= 2;
-            rocks -= Mathf.Pow(100, multLevel / 2);
-            multLevel += 1;
-        }
-        else
-        {
-            Debug.Log(Mathf.Pow(400, autoLevel / 2));
-        }
+        Multiplier *= 2;
+        Debug.Log(Multiplier);
     }
 
     public void EnableAuto()
     {
-        if(rocks > Mathf.Pow(400, autoLevel / 2))
-        {
-            ACEnabled = true;
-            ACTime *= 1.5f;
-            rocks -= Mathf.Pow(400, autoLevel / 2);
-            autoLevel += 1;
-        }
-        else
-        {
-            Debug.Log(Mathf.Pow(400, autoLevel / 2));
-        }
+        ACEnabled = true;
+        ACTime *= 1.5f;
     }
 
     private IEnumerator AutoClicker()
@@ -100,6 +74,7 @@ public class LogicController : MonoBehaviour
         Points += 1;
         PointsTilNextLevel -= 1;
         Clicks += 1;
+        Debug.Log(ACTime);
         yield return new WaitForSeconds(1 / ACTime);
         ACEnabled = true;
     }
