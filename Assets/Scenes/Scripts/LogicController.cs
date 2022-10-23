@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LogicController : MonoBehaviour
 {
+    public ParticleSystem boom;
     public float Points;
     public float CurrentLevel;
     public float PointsTilNextLevel;
@@ -55,6 +56,7 @@ public class LogicController : MonoBehaviour
         Points += Multiplier;
         PointsTilNextLevel -= Multiplier;
         Clicks += 1;
+        CreateBoom();
     }
 
     public void IncreaseMult()
@@ -77,6 +79,10 @@ public class LogicController : MonoBehaviour
         Debug.Log(ACTime);
         yield return new WaitForSeconds(1 / ACTime);
         ACEnabled = true;
+    }
+
+    public void CreateBoom(){
+        boom.Play();
     }
 
 }
